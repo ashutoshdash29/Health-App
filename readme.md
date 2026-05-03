@@ -49,7 +49,7 @@ User
 - [x] Medical disclaimer on every result
 - [x] Multi-prescription support with per-card analyze
 - [x] Dockerized with multi-stage builds
-- [x] Deployed on AWS EC2 (t2.micro)
+- [x] Deployed on AWS EC2 (t3.micro)
 
 ## ❌ Features Skipped
 
@@ -61,23 +61,25 @@ User
 ## 🔑 Environment Variables
 
 ### Backend (`backend/.env`)
+|-----------------------------------|-------------------------------------------------------------------------------------|
+|              Variable             |                               Description                                           |
+|-----------------------------------|-------------------------------------------------------------------------------------|
+| `DATABASE_URL`                    | PostgreSQL connection string                                                        |
+| `SECRET_KEY`                      | JWT signing secret (use a long random string)                                       |
+| `ALGORITHM`                       | JWT algorithm (HS256)                                                               |
+| `ACCESS_TOKEN_EXPIRE_MINUTES`     | Token expiry duration                                                               |
+| `GEMINI_API_KEY`                  | Google Gemini API key — get from [aistudio.google.com](https://aistudio.google.com) |
+| `UPLOAD_DIR`                      | Directory to store uploaded files                                                   |
+|-----------------------------------|-------------------------------------------------------------------------------------|
 
-| Variable | Description |
-|---|---|
-| `DATABASE_URL` | PostgreSQL connection string |
-| `SECRET_KEY` | JWT signing secret (use a long random string) |
-| `ALGORITHM` | JWT algorithm (HS256) |
-| `ACCESS_TOKEN_EXPIRE_MINUTES` | Token expiry duration |
-| `GEMINI_API_KEY` | Google Gemini API key — get from [aistudio.google.com](https://aistudio.google.com) |
-| `UPLOAD_DIR` | Directory to store uploaded files |
 
 ### Frontend (`frontend/.env`)
+|-----------------------------------|-------------------------------------------------------------------------------------|
+|              Variable             |                               Description                                           |
+|-----------------------------------|-------------------------------------------------------------------------------------|
+| `VITE_API_URL`                    | Backend API base URL (e.g. `http://YOUR_EC2_IP:8000`)                               |
+|-----------------------------------|-------------------------------------------------------------------------------------|
 
-| Variable | Description |
-|---|---|
-| `VITE_API_URL` | Backend API base URL (e.g. `http://YOUR_EC2_IP:8000`) |
-
----
 
 ## 💻 Local Setup
 
@@ -90,8 +92,8 @@ User
 
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR_USERNAME/health-companion.git
-cd health-companion
+git clone https://github.com/ashutoshdash29/Health-App.git
+cd health-app
 
 # Create backend env file
 cp backend/.env.example backend/.env
